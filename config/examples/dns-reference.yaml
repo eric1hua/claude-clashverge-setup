@@ -1,0 +1,57 @@
+# Reference only; the installer preserves each existing DNS configuration.
+# Review resolver availability and bootstrap requirements on your own network.
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  prefer-h3: false
+  fake-ip-filter-mode: blacklist
+  fake-ip-filter:
+  - '*.lan'
+  - '*.local'
+  - '*.arpa'
+  - time.*.com
+  - ntp.*.com
+  - +.market.xiaomi.com
+  - localhost.ptlogin2.qq.com
+  - '*.msftncsi.com'
+  - www.msftconnecttest.com
+  default-nameserver:
+  - 223.5.5.5
+  - 119.29.29.29
+  nameserver:
+  - https://dns.google/dns-query
+  - https://1.1.1.1/dns-query
+  nameserver-policy:
+    +.anthropic.com:
+    - https://1.1.1.1/dns-query#Claude
+    - https://8.8.8.8/dns-query#Claude
+    +.claude.ai:
+    - https://1.1.1.1/dns-query#Claude
+    - https://8.8.8.8/dns-query#Claude
+    +.claude.com:
+    - https://1.1.1.1/dns-query#Claude
+    - https://8.8.8.8/dns-query#Claude
+    +.clau.de:
+    - https://1.1.1.1/dns-query#Claude
+    - https://8.8.8.8/dns-query#Claude
+    +.claudemcpclient.com:
+    - https://1.1.1.1/dns-query#Claude
+    - https://8.8.8.8/dns-query#Claude
+    +.claudemcpcontent.com:
+    - https://1.1.1.1/dns-query#Claude
+    - https://8.8.8.8/dns-query#Claude
+    +.claudeusercontent.com:
+    - https://1.1.1.1/dns-query#Claude
+    - https://8.8.8.8/dns-query#Claude
+    geosite:cn:
+    - https://doh.pub/dns-query#DIRECT
+    - https://dns.alidns.com/dns-query#DIRECT
+  respect-rules: true
+  proxy-server-nameserver:
+  - https://doh.pub/dns-query
+  - https://dns.alidns.com/dns-query
+  direct-nameserver-follow-policy: false
+  use-hosts: false
+  use-system-hosts: false
